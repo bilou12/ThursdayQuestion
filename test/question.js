@@ -27,6 +27,20 @@ contract('Question', (accounts) => {
         let actualGoodAnswer = await instance.getGoodAnswer({from: account1});
         assert.equal(actualGoodAnswer.toNumber(), answer, "The good answer has not been properly defined");
     });
+
+    it('should allow only owner to setQuestionAndGoodAnswer', async() => {
+        const question = "question";
+        const answer = 1;
+
+        try {
+            let res = await instance.setQuestionAndGoodAnswer(question, answer, {from: account2});
+        } catch (e) {
+//            console.log(`e: ${e}`)
+            assert.equal(e,
+                "Error: Returned error: VM Exception while processing transaction: revert Ownable: caller is not the owner -- Reason given: Ownable: caller is not the owner.",
+                "The function can be called by not only the owner")
+        }
+    });
 });
 
 
