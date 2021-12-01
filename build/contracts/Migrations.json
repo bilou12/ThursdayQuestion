@@ -59,7 +59,7 @@
   "sourceMap": "66:339:4:-;;;232:56;8:9:-1;5:2;;;30:1;27;20:12;5:2;232:56:4;271:10;263:5;;:18;;;;;;;;;;;;;;;;;;66:339;;;;;;",
   "deployedSourceMap": "66:339:4:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;66:339:4;;;;;;;;;;;;;;;;;;;;;;;;;;;;;118:36;;;:::i;:::-;;;;;;;;;;;;;;;;;;;92:20;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;294:109;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;294:109:4;;;;;;;;;;;;;;;;;:::i;:::-;;118:36;;;;:::o;92:20::-;;;;;;;;;;;;;:::o;294:109::-;211:5;;;;;;;;;;;197:19;;:10;:19;;;193:26;;;387:9;360:24;:36;;;;193:26;294:109;:::o",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.25 <0.7.0;\n\ncontract Migrations {\n    address public owner;\n    uint public last_completed_migration;\n\n    modifier restricted() {\n        if (msg.sender == owner) _;\n    }\n\n    constructor() public {\n        owner = msg.sender;\n    }\n\n    function setCompleted(uint completed) public restricted {\n        last_completed_migration = completed;\n    }\n}\n",
-  "sourcePath": "C:\\Users\\azais\\workspace\\MetaCoin\\contracts\\Migrations.sol",
+  "sourcePath": "C:\\Users\\azais\\workspace\\ThursdayQuestion\\contracts\\Migrations.sol",
   "ast": {
     "absolutePath": "project:/contracts/Migrations.sol",
     "exportedSymbols": {
@@ -176,7 +176,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 465,
+                        "referencedDeclaration": 469,
                         "src": "197:3:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -280,7 +280,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 465,
+                        "referencedDeclaration": 469,
                         "src": "271:3:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -626,7 +626,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 465,
+                                  "referencedDeclaration": 469,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -763,7 +763,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 465,
+                                  "referencedDeclaration": 469,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -963,7 +963,7 @@
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-12-01T11:30:21.182Z",
+  "updatedAt": "2021-12-01T11:42:29.973Z",
   "devdoc": {
     "methods": {}
   },

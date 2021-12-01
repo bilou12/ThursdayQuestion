@@ -34,7 +34,7 @@
   "sourceMap": "66:172:2:-;;132:2:-1;166:7;155:9;146:7;137:37;255:7;249:14;246:1;241:23;235:4;232:33;222:2;;269:9;222:2;293:9;290:1;283:20;323:4;314:7;306:22;347:7;338;331:24",
   "deployedSourceMap": "66:172:2:-;;;;;;;;;;;;;;;;;;;;;;;;91:145;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;91:145:2;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;163:20;215:14;206:6;:23;199:30;;91:145;;;;:::o",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.25 <0.7.0;\n\nlibrary ConvertLib {\n    function convert(uint amount, uint conversionRate) public pure returns (uint convertedAmount)\n    {\n        return amount * conversionRate;\n    }\n}\n",
-  "sourcePath": "C:\\Users\\azais\\workspace\\MetaCoin\\contracts\\ConvertLib.sol",
+  "sourcePath": "C:\\Users\\azais\\workspace\\ThursdayQuestion\\contracts\\ConvertLib.sol",
   "ast": {
     "absolutePath": "project:/contracts/ConvertLib.sol",
     "exportedSymbols": {
@@ -488,7 +488,7 @@
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-12-01T11:30:21.177Z",
+  "updatedAt": "2021-12-01T11:42:29.968Z",
   "devdoc": {
     "methods": {}
   },
