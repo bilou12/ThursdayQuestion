@@ -1,4 +1,4 @@
-const Question = artifacts.require("Question");
+const Question = artifacts.require("MockedQuestion");
 
 contract('Question', (accounts) => {
     let instance;
@@ -19,7 +19,7 @@ contract('Question', (accounts) => {
         const answer = 1;
 
         let res = await instance.setQuestionAndGoodAnswer(question, answer, {from: account1});
-        //    await debug(res = instance.setQuestionAndGoodAnswer.call(question, answer, {from: account1}));
+        //    await debug(res = instance.setQuestionAndGoodAnswer(question, answer, {from: account1}));
 
         let actualQuestion = await instance.getQuestion({from: account1});
         assert.equal(actualQuestion, question, "The question has not been properly defined");
@@ -41,6 +41,25 @@ contract('Question', (accounts) => {
                 "The function can be called by not only the owner")
         }
     });
+
+    it('should reveal the correct loser', async() => {
+        const question = "question";
+        const answer = 1;
+
+        let res = await instance.setQuestionAndGoodAnswer(question, answer, {from: account1});
+
+        await instance._mock_add_answer_to_map_player_answer(account1, 1);
+        await instance._mock_add_answer_to_map_player_answer(account2, 2);
+//        await debug(instance._mock_add_answer_to_map_player_answer(account2, 2));
+
+//        let res = await instance.revealLoser();
+        await debug(res = instance.revealLoser());
+
+        console.log(`res: ${res}`)
+
+        assert.equal(res, account2, 'The loser is not the one expected')
+    });
+
 });
 
 
