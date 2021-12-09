@@ -1,10 +1,12 @@
-const Question = artifacts.require("MockedQuestion");
+//const Question = artifacts.require("MockedQuestion");
+const Question = artifacts.require("Question");
 
 contract('Question', (accounts) => {
     let instance;
 
     let account1 = accounts[0];
     let account2 = accounts[1];
+    let account3 = accounts[2];
 
     beforeEach('setup contract for each test', async function () {
         instance = await Question.new(account1);
@@ -48,16 +50,22 @@ contract('Question', (accounts) => {
 
         let res = await instance.setQuestionAndGoodAnswer(question, answer, {from: account1});
 
-        await instance._mock_add_answer_to_map_player_answer(account1, 1);
-        await instance._mock_add_answer_to_map_player_answer(account2, 2);
-//        await debug(instance._mock_add_answer_to_map_player_answer(account2, 2));
+//        await instance._mock_add_answer_to_map_player_answer(account1, 1);
+//        await instance._mock_add_answer_to_map_player_answer(account2, 2);
+////        await debug(instance._mock_add_answer_to_map_player_answer(account2, 2));
+//
+////        let res = await instance.revealLoser();
+//        await debug(actualLoser = instance.revealLoser());
 
-//        let res = await instance.revealLoser();
-        await debug(res = instance.revealLoser());
+        let bla1 = await instance.setAnswer(2, {from: account1})
+        let bla2 = await instance.setAnswer(10, {from: account2})
+        let bla3 = await instance.setAnswer(5, {from: account3})
 
-        console.log(`res: ${res}`)
+        let actualLoser = await instance.revealLoser();
 
-        assert.equal(res, account2, 'The loser is not the one expected')
+        console.log(`actualLoser: ${actualLoser}`)
+
+        assert.equal(actualLoser, account2, 'The loser is not the one expected')
     });
 
 });
