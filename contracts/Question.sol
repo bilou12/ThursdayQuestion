@@ -32,7 +32,7 @@ contract Question is Ownable {
         return goodAnswer;
     }
 
-    function revealLoser() public view returns (address) {
+    function revealLoser() public view onlyOwner returns (address) {
         int distance = 0;
         address loser;
 
@@ -44,6 +44,14 @@ contract Question is Ownable {
                 loser = players[i];
             }
         }
+
+        return loser;
+    }
+
+    function processResults() public onlyOwner returns (address) {
+        address loser = revealLoser();
+
+        transferOwnership(loser);
 
         return loser;
     }

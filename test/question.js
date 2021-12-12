@@ -61,13 +61,36 @@ contract('Question', (accounts) => {
         let bla2 = await instance.setAnswer(10, {from: account2})
         let bla3 = await instance.setAnswer(5, {from: account3})
 
-        let actualLoser = await instance.revealLoser();
+        let actualLoser = await instance.revealLoser({from: account1});
 
         console.log(`actualLoser: ${actualLoser}`)
 
         assert.equal(actualLoser, account2, 'The loser is not the one expected')
     });
 
+    it('should transfer ownership to the loser', async() => {
+        const question = "question";
+        const answer = 1;
+
+        let res1 = await instance.setQuestionAndGoodAnswer(question, answer, {from: account1});
+
+        let bla1 = await instance.setAnswer(2, {from: account1})
+        let bla2 = await instance.setAnswer(10, {from: account2})
+        let bla3 = await instance.setAnswer(5, {from: account3})
+
+        // assert that account1 is the owner
+        let actualGoodAnswer = await instance.getGoodAnswer({from: account1});
+        assert.equal(actualGoodAnswer.toNumber(), answer, "The good answer has not been properly defined");
+
+        // assert that account2 is the loser
+        let tx = await instance.processResults({from: account1});
+        let actualLoserAndNewOwner = tx.receipt.logs[0].args.newOwner;
+        assert.equal(actualLoserAndNewOwner, account2, 'The loser is not the one expected')
+
+        // assert that account2 has become the owner
+        let actualGoodAnswer2 = await instance.getGoodAnswer({from: actualLoserAndNewOwner});
+        assert.equal(actualGoodAnswer2.toNumber(), answer, "The good answer has not been properly defined");
+    });
 });
 
 
